@@ -1,0 +1,37 @@
+version: '3.3'
+
+services:
+   db:
+     build: .
+     volumes:
+ #     - .docker/database.sql:/docker-entrypoint-initdb.d/database.sql
+      - db_data:/var/lib/mysql
+     ports:
+      - 33307:3306
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: '@pawan'
+       MYSQL_DATABASE: crudwebdb
+       MYSQL_USER: pawan
+       MYSQL_PASSWORD: '@pawan'
+
+    
+   crudwebapp:
+     depends_on:
+       - db
+     build: .
+     ports:
+       - "8000:80"
+     restart: always
+#     env_file:
+#       - ./code/.env
+       
+     environment:
+       - DB_SERVER = 192.168.99.101
+       - DB_PORT = 33307
+       - DB_NAME = crudwebdb
+       - DB_USERNAME = pawan
+       - DB_PASSWORD = @pawan
+
+volumes:
+    db_data:
