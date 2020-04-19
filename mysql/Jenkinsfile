@@ -23,9 +23,9 @@ pipeline {
       steps {
           withKubeConfig([credentialsId: 'credentialsId', 
 	  serverUrl: 'https://192.168.99.100:8443']) {
-	      sh 'kubectl apply -k mysql/.'
-          sh 'cat mysql/db.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -f -'
-          sh 'kubectl apply -f mysql/db-service.yml'
+	      sh 'kubectl apply -n web -k mysql/.'
+          sh 'cat mysql/db.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -n web -f -'
+          sh 'kubectl apply -n web -f mysql/db-service.yml'
         }
       }
   }
