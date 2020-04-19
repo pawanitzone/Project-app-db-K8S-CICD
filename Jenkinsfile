@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Apply Kubernetes Files') {
       steps {
-          withKubeConfig([credentialsId: 'credentialsId', 
+          withKubeConfig([credentialsId: 'default-credentialsId', 
 	  serverUrl: 'https://192.168.99.100:8443']) {
           sh 'cat app.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -f -'
           sh 'kubectl apply -f app-service.yml'
