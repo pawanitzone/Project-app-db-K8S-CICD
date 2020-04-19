@@ -22,10 +22,11 @@ spec:
              - name: DB_USERNAME
                value: pawank
              - name: DB_PASSWORD
-               valueFrom:
-                 secretKeyRef:
-                   name: mysql-pass
-                   key: password
+               value: '@pawan'
+               #valueFrom:
+               #  secretKeyRef:
+               #    name: mysql-pass
+               #    key: password
            image: pawanitzone/myapp:{{BUILD_NUMBER}}
            #image: pawanitzone/myapp
            ports:
