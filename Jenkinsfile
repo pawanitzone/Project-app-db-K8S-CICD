@@ -23,6 +23,7 @@ pipeline {
       steps {
           withKubeConfig([credentialsId: 'credentialsId', 
 	  serverUrl: 'https://192.168.99.100:8443']) {
+          sh 'kubectl get all -n web'
           sh 'cat app.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -n web -f  -'
           sh 'kubectl apply -n web -f app-service.yml '
         }
