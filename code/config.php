@@ -15,12 +15,11 @@
 
 
 $databaseHost = getenv('DB_SERVER');
-$databasePort = getenv('DB_PORT');
 $databaseName = getenv('DB_NAME');
 $databaseUsername = getenv('DB_USERNAME');
 $databasePassword = getenv('DB_PASSWORD');
 
 
-$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName, $databasePort); 
+$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName); 
  
 ?>
