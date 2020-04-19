@@ -14,8 +14,12 @@ spec:
      spec:
        containers:
          - name: db-pod
-           image: pawanitzone/mydb:{{BUILD_NUMBER}}
-           #image: pawanitzone/mydb
+           #image: pawanitzone/mydb:{{BUILD_NUMBER}}
+           image: pawanitzone/mydb:6
+           env:
+             - name: MYSQL_ROOT_PASSWORD
+               value: '@pawan'
+
            volumeMounts:
            - mountPath: "/usr/lib/mysql"
              name: db-vol
