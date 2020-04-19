@@ -16,8 +16,15 @@ spec:
          - name: db-pod
            image: pawanitzone/mydb:{{BUILD_NUMBER}}
            #image: pawanitzone/mydb
+           volumeMounts:
+           - mountPath: "/usr/lib/mysql"
+             name: db-vol
            ports:
              - containerPort: 3306
+       volumes:
+        - name: db-vol
+          persistentVolumeClaim:
+            claimName: db-vol-claim
   replicas: 1
   selector:
     matchLabels:
