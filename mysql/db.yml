@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  labels:
+    app: db-pod
+
+spec:
+  template:
+     metadata:
+       name: db-pod
+       labels:
+         app: db-pod
+     spec:
+       containers:
+         - name: db-pod
+           image: pawanitzone/mydb:{{BUILD_NUMBER}}
+           #image: pawanitzone/mydb
+           ports:
+             - containerPort: 3306
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-pod
