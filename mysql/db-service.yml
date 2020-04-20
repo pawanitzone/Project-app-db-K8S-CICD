@@ -1,10 +1,28 @@
+##HeadLess Service for db-pod
 apiVersion: v1
 kind: Service
 metadata:
   name: db-service
+  labels:
+   app: db-pod
 spec:
   ports:
    - port: 3306
   selector:
      app: db-pod
   clusterIP: None
+
+---
+#### Client service for connecting to any MySQL instance for reads.
+# For writes, you must instead connect to the master: mysql-0.mysql.
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service-read
+  labels:
+   app: db-pod
+spec:
+  ports:
+   - port: 3306
+  selector:
+     app: db-pod
