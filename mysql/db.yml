@@ -31,7 +31,7 @@ spec:
         - name: db-volume
           persistentVolumeClaim:
             claimName: db-pvc-claim
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: db-pod
