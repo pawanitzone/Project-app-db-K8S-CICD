@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: db-deployment
   labels:
@@ -14,21 +14,23 @@ spec:
      spec:
        containers:
          - name: db-pod
-           #image: pawanitzone/mydb:{{BUILD_NUMBER}}
-           image: pawanitzone/mydb:6
+           image: pawanitzone/mydb:{{BUILD_NUMBER}}
            env:
              - name: MYSQL_ROOT_PASSWORD
-               value: '@pawan'
+               valueFrom:
+                secretKeyRef:
+                 name: mysql-pass
+                 key: password
 
            volumeMounts:
            - mountPath: "/usr/lib/mysql"
-             name: db-vol
+             name: db-volume
            ports:
              - containerPort: 3306
        volumes:
-        - name: db-vol
+        - name: db-volume
           persistentVolumeClaim:
-            claimName: db-vol-claim
+            claimName: db-pvc-claim
   replicas: 1
   selector:
     matchLabels:
