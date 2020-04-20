@@ -17,6 +17,8 @@ spec:
            env:
              - name: DB_SERVER
                value: db-service
+             - name: DB_PORT
+               value: 31306
              - name: DB_NAME
                value: crudwebdb
              - name: DB_USERNAME
@@ -27,9 +29,9 @@ spec:
                #  secretKeyRef:
                #    name: mysql-pass
                #    key: password
-           image: pawanitzone/myapp:{{BUILD_NUMBER}}
+            image: pawanitzone/myapp:{{BUILD_NUMBER}}
            #image: pawanitzone/myapp
-           ports:
+            ports:
              - containerPort: 80
 
   replicas: 1
