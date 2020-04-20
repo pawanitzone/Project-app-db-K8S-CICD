@@ -6,9 +6,8 @@ $databaseUsername = getenv('DB_USERNAME');
 $databasePassword = getenv('DB_PASSWORD');
 
 $mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
-if ($mysqli -> connect_errno) {
-  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
   exit();
 }
-
 ?>
