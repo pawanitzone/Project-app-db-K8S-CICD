@@ -18,7 +18,7 @@ spec:
              - name: DB_SERVER
                value: db-service
              - name: DB_PORT
-               value: 31306
+               value: '31306'
              - name: DB_NAME
                value: crudwebdb
              - name: DB_USERNAME
