@@ -17,10 +17,11 @@ spec:
            env:
              - name: DB_SERVER
                value: db-service
-             - name: DB_PORT
-               value: '31306'
              - name: DB_NAME
-               value: crudwebdb
+               valueFrom: 
+                secretKeyRef:
+                 name: mysql-pass
+                 key: dbname
              - name: DB_USERNAME
                valueFrom: 
                  secretKeyRef:
