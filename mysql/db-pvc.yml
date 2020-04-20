@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata: 
-   name: db-vol-claim
+   name: db-pvc-claim
 spec:
   resources:
    requests:
      storage: 1Gi
+  volumeName: db-pv
   accessModes:
     - ReadWriteOnce
