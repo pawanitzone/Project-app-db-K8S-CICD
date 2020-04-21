@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Apply Kubernetes Files') {
       steps {
-          withKubeConfig([credentialsId: 'credentialsId', 
+          withKubeConfig([credentialsId: 'web', 
 	  serverUrl: 'https://34.70.93.191']) {
 	  sh 'kubectl apply -n web -f mysql/secret.yml'
 	  sh 'kubectl apply -n web -f mysql/db-pvc.yml'
