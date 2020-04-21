@@ -28,7 +28,7 @@ pipeline {
     }
     stage('Deploy to GKE') {
        steps{  
-	  sh 'kubectl apply -n web -f mysql/secret.yml'
+	  //sh 'kubectl apply -n web -f mysql/secret.yml'
 	  sh 'kubectl apply -n web -f mysql/db-pvc.yml'
 	  sh 'cat mysql/db.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -n web -f -'
           step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'mysql/db.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
