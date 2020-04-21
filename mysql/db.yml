@@ -32,6 +32,7 @@ spec:
           persistentVolumeClaim:
             claimName: db-pvc-claim
   replicas: 2
+  serviceName: db-service
   selector:
     matchLabels:
       app: db-pod
