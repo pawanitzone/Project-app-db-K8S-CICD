@@ -8,7 +8,10 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  awsElastickBlockStore:
-    volumeID:
+  persistentVolumeReclaimPolicy: Retain
+  gcePersistentDisk:
+    pdName: database
     fsType: ext4
+  #awsElastickBlockStore:
+  #  volumeID:
+  #  fsType: ext4
