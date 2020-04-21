@@ -20,12 +20,13 @@ pipeline {
       }
     }
     stage('Deploy to GKE') {
-       step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+       steps{  
+          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 	  sh 'kubectl apply -n web -f mysql/secret.yml'
 	  sh 'kubectl apply -n web -f mysql/db-pvc.yml'
           sh 'cat mysql/db.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -n web -f -'
           sh 'kubectl apply -n web -f mysql/db-service.yml'
-        
+       }
       }
   }
 }
