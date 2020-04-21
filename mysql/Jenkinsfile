@@ -1,5 +1,12 @@
 pipeline {
   agent any
+    environment {
+        PROJECT_ID = 'essential-smoke-274903'
+        LOCATION = 'us-central1-c'
+        CREDENTIALS_ID = 'web'
+        CLUSTER_NAME = 'hirelab'
+                  
+    }
   stages {
     stage('Docker Build') {
       steps {
