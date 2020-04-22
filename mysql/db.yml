@@ -160,11 +160,4 @@ spec:
   selector:
     matchLabels:
       app: db-pod
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      resources:
-        requests:
-          storage: 2Gi
+  
