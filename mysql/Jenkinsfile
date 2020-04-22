@@ -34,7 +34,7 @@ pipeline {
 	  //sh 'kubectl apply  -f mysql/db-pvc.yml'
 	  //sh 'cat mysql/db.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -f -'
 	  //sh 'kubectl apply -f mysql/db-service.yml'
-	  sh 'kubectl apply -f mysql/pod-test.yml'
+	  sh 'kubectl apply -f mysql/pod-test.yml -n web'
           step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'mysql/pod-test.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 	  sh 'kubectl get all -n web'
        }
