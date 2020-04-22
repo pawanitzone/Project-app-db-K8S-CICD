@@ -17,7 +17,7 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerHubUser', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push pawanitzone/mydb:${env.BUILD_NUMBER}"
+          sh "docker push pawanitzone/myapp:${env.BUILD_NUMBER}"
         }
       }
     }
