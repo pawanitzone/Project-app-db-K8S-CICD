@@ -32,8 +32,7 @@ spec:
                  secretKeyRef:
                   name: mysql-pass
                   key: password
-           image: pawanitzone/myapp:{{BUILD_NUMBER}}
-           #image: pawanitzone/myapp
+           image: pawanitzone/myapp
            ports:
              - containerPort: 80
 
