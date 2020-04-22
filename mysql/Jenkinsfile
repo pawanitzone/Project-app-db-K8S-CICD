@@ -3,7 +3,7 @@ pipeline {
     environment {
         PROJECT_ID = 'essential-smoke-274903'
         LOCATION = 'us-central1-c'
-        CREDENTIALS_ID = 'gkeweb'
+        CREDENTIALS_ID = 'credentialsId'
         CLUSTER_NAME = 'hirelab'
                   
     }
@@ -31,9 +31,9 @@ pipeline {
 	  //sh 'kubectl apply -f mysql/secret.yml'
 	  //sh 'kubectl apply  -f mysql/db-pvc.yml'
 	  //sh 'cat mysql/db.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -f -'
-	  sh 'kubectl apply -f mysql/db-service.yml'
-          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'db-service.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
-	  
+	  //sh 'kubectl apply -f mysql/db-service.yml'
+          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+	  sh 'kubectl get all -n web'
        }
       }
   }
