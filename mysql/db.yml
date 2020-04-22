@@ -94,11 +94,11 @@ spec:
            ports:
            - name: xtrabackup
              containerPort: 3307
-             command:
-             - bash
-             - "-c"
-             - |
-                 set -ex
+           command:
+           - bash
+           - "-c"
+           - |
+            set -ex
                  cd /var/lib/mysql
                  # Determine binlog position of cloned data, if any.
                  if [[ -f xtrabackup_slave_info && "x$(<xtrabackup_slave_info)" != "x" ]]; then
