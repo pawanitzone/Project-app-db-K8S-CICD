@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Docker Remove Image') {
       steps {
-        sh "docker rmi pawanitzone/mydb:${env.BUILD_NUMBER}"
+        sh "docker rmi pawanitzone/myapp:${env.BUILD_NUMBER}"
       }
     }
     
