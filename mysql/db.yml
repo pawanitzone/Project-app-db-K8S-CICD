@@ -41,6 +41,9 @@ spec:
        containers:
          - name: db-pod
            image: pawanitzone/mydb
+           env:
+             - name: MYSQL_ALLOW_EMPTY_PASSWORD
+               value: "1"
            #env:
            #  - name: MYSQL_ROOT_PASSWORD
            #    valueFrom:
