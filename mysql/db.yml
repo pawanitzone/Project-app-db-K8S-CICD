@@ -51,6 +51,7 @@ spec:
            volumeMounts:
            - mountPath: /var/lib/mysql
              name: db-volume
+             subPath: mysql
            ports:
              - containerPort: 3306
              
@@ -73,6 +74,11 @@ spec:
         - name: db-volume
           persistentVolumeClaim:
             claimName: db-pvc-claim
+        - name: conf
+          emptyDir: {}
+        - name: config-map
+          configMap:
+           name: mysql    
   replicas: 2
   serviceName: db-service
   selector:
