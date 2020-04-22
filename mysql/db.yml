@@ -92,15 +92,15 @@ spec:
          
          
          
-         - name: xtrabackup
-           image: gcr.io/google-samples/xtrabackup:1.0
-           ports:
-            - name: xtrabackup
-              containerPort: 3307
-            command:
-            - bash
-            - "-c"
-            - |
+       - name: xtrabackup
+         image: gcr.io/google-samples/xtrabackup:1.0
+         ports:
+          - name: xtrabackup
+            containerPort: 3307
+           command:
+           - bash
+           - "-c"
+           - |
              set -ex
              cd /var/lib/mysql
 
