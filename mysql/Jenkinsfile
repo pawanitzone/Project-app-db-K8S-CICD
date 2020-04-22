@@ -3,7 +3,7 @@ pipeline {
     environment {
         PROJECT_ID = 'essential-smoke-274903'
         LOCATION = 'us-central1-c'
-        CREDENTIALS_ID = 'gkeweb'
+        CREDENTIALS_ID = 'credentialsId'
         CLUSTER_NAME = 'hirelab'
                   
     }
