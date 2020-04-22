@@ -32,11 +32,11 @@ spec:
           else
             cp /mnt/config-map/slave.cnf /mnt/conf.d/
           fi
-        volumeMounts:
-        - name: conf
-          mountPath: /mnt/conf.d
-        - name: config-map
-          mountPath: /mnt/config-map
+         volumeMounts:
+         - name: conf
+           mountPath: /mnt/conf.d
+         - name: config-map
+           mountPath: /mnt/config-map
       
        containers:
          - name: db-pod
