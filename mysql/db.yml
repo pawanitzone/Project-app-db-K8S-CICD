@@ -92,13 +92,13 @@ spec:
          - name: xtrabackup
            image: gcr.io/google-samples/xtrabackup:1.0
            ports:
-             - name: xtrabackup
-               containerPort: 3307
-               command:
-               - bash
-               - "-c"
-               - |
-                 set -ex
+           - name: xtrabackup
+             containerPort: 3307
+             command:
+             - bash
+             - "-c"
+             - |
+             set -ex
                  cd /var/lib/mysql
                  # Determine binlog position of cloned data, if any.
                  if [[ -f xtrabackup_slave_info && "x$(<xtrabackup_slave_info)" != "x" ]]; then
@@ -135,12 +135,12 @@ spec:
                    exec ncat --listen --keep-open --send-only --max-conns=1 3307 -c \
                    "xtrabackup --backup --slave-info --stream=xbstream --host=127.0.0.1 --user=root"
 
-               volumeMounts:
-               - name: db-volume
-                 mountPath: /var/lib/mysql
-                 subPath: mysql
-               - name: conf
-                 mountPath: /etc/mysql/conf.d
+             volumeMounts:
+             - name: db-volume
+               mountPath: /var/lib/mysql
+               subPath: mysql
+             - name: conf
+               mountPath: /etc/mysql/conf.d
 
        volumes:
         - name: db-volume
@@ -156,4 +156,4 @@ spec:
   selector:
     matchLabels:
       app: db-pod
-  
+
