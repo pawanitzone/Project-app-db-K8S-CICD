@@ -33,7 +33,7 @@ pipeline {
 	  step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'mysql/secret.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 		  step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'mysql/db-pvc.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 		  step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'mysql/db-service.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
-		  sh 'cat mysql/db.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -f -'
+		  sh "sed -i 's/hello:latest/hello:${env.BUILD_ID}/g' mysql/db.yml"
 		  step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'mysql/db.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
        }
       }
