@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build -t pawanitzone/mydb:${env.BUILD_NUMBER} mysql/."
+        sh "docker build -t pawanitzone/myapp:${env.BUILD_NUMBER} ."
       }
     }
     stage('Docker Push') {
