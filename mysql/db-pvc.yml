@@ -3,9 +3,10 @@ kind: PersistentVolumeClaim
 metadata: 
    name: db-pvc-claim
 spec:
+  storageClassName: ""
   resources:
    requests:
-     storage: 1Gi
+     storage: 2Gi
   volumeName: db-pv
   accessModes:
     - ReadWriteOnce
