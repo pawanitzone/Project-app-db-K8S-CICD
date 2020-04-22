@@ -14,7 +14,7 @@ spec:
      spec:
        containers:
          - name: db-pod
-           image: pawanitzone/mydb:{{BUILD_NUMBER}}
+           image: pawanitzone/mydb
            env:
              - name: MYSQL_ROOT_PASSWORD
                valueFrom:
