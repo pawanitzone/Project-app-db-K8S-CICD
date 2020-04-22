@@ -24,10 +24,10 @@ pipeline {
           withKubeConfig([credentialsId: 'credentialsId', 
 	  serverUrl: 'https://34.70.93.191']) {
           sh 'kubectl get all -n web'
-          sh 'kubectl apply -n web -f mysql/secret.yml'
-          sh 'kubectl apply -n web -f mysql/db-pvc.yml'
-          sh 'kubectl apply -n web -f mysql/db-service.yml'
-          sh 'cat mysql/db.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -n web -f -'
+          //sh 'kubectl apply -n web -f mysql/secret.yml'
+          //sh 'kubectl apply -n web -f mysql/db-pvc.yml'
+          //sh 'kubectl apply -n web -f mysql/db-service.yml'
+          //sh 'cat mysql/db.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" |kubectl apply -n web -f -'
         
         }
       }
