@@ -23,7 +23,7 @@ spec:
                  key: password
 
            volumeMounts:
-           - mountPath: "/usr/lib/mysql"
+           - mountPath: "/var/lib/mysql"
              name: db-volume
            ports:
              - containerPort: 3306
