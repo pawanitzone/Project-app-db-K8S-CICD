@@ -27,7 +27,7 @@ pipeline {
                         sh "sed -i 's/myapp/myapp:${env.BUILD_ID}/g' app.yml"
                         sh '''
                         ARGOCD_SERVER="34.68.61.3"
-                        APP_NAME="guestbook"
+                        APP_NAME="myapp"
     
                         # Deploy to ArgoCD
                         ARGOCD_SERVER=$ARGOCD_SERVER argocd --grpc-web app sync $APP_NAME --force
