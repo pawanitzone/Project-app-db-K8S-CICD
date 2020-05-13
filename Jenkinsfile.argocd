@@ -21,11 +21,7 @@ pipeline {
       }
     }
     
-    
-    pipeline {
-    agent any
-    stages {
-        stage ('Deploy_Argocd') {
+     stage ('Deploy_Argocd') {
              steps {
                      withCredentials([string(credentialsId: "argocd-deploy-role", variable: 'ARGOCD_AUTH_TOKEN')]) {
                         sh "sed -i 's/myapp/myapp:${env.BUILD_ID}/g' app.yml"
