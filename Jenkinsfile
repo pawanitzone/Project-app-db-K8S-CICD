@@ -2,7 +2,7 @@ pipeline {
   agent any
     
   stages {
-    stage('Docker Build') {
+    /**stage('Docker Build') {
       steps {
         sh "docker build -t pawanitzone/myapp:${env.BUILD_NUMBER} ."
       }
@@ -20,13 +20,13 @@ pipeline {
         sh "docker rmi pawanitzone/myapp:${env.BUILD_NUMBER}"
       }
     }
-    
+    **/
      stage ('Deploy_Argocd') {
              steps {
                      withCredentials([string(credentialsId: "argocd-deploy-role", variable: 'ARGOCD_AUTH_TOKEN')]) {
                         
                         sh '''
-                        sed -i 's/myapp/myapp:${env.BUILD_ID}/g' app.yml
+                        
                         ARGOCD_SERVER="34.68.61.3"
                         APP_NAME="myapp"
     
