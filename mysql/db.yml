@@ -70,14 +70,24 @@ spec:
             timeoutSeconds: 5
      
        volumes:
-        - name: db-volume
-          persistentVolumeClaim:
-            claimName: db-pvc-claim
+        #- name: db-volume
+        #  persistentVolumeClaim:
+        #    claimName: db-pvc-claim
         - name: conf
           emptyDir: {}
         - name: config-map
           configMap:
-           name: mysql    
+           name: mysql   
+##Remove volumeClaimTemplates if running on GKE or K8s cluster
+  volumeClaimTemplates:
+  - metadata:
+      name: db-volume
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: cloud-ssd
+      resources:
+        requests:
+          storage: 1Gi     
   replicas: 2
   serviceName: db-service
   selector:
