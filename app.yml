@@ -32,7 +32,8 @@ spec:
                  secretKeyRef:
                   name: mysql-pass
                   key: password
-           image: pawanitzone/myapp
+           #image: pawanitzone/myapp  //image parameter if using jenkinsfile of k8s deployment
+           image: pawanitzone/myapp:9
            ports:
              - containerPort: 80
 
