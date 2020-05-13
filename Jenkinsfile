@@ -24,8 +24,9 @@ pipeline {
      stage ('Deploy_Argocd') {
              steps {
                      withCredentials([string(credentialsId: "argocd-deploy-role", variable: 'ARGOCD_AUTH_TOKEN')]) {
-                        sh "sed -i 's/myapp/myapp:${env.BUILD_ID}/g' app.yml"
+                        
                         sh '''
+                        sed -i 's/myapp/myapp:${env.BUILD_ID}/g' app.yml
                         ARGOCD_SERVER="34.68.61.3"
                         APP_NAME="myapp"
     
