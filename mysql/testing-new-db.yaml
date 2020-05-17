@@ -81,8 +81,8 @@ spec:
           mountPath: /etc/mysql/conf.d
         resources:
           requests:
-            cpu: 500m
-            memory: 500m
+            cpu: 10m
+            memory: 250m
         livenessProbe:
           exec:
             command:
