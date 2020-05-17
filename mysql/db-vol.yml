@@ -11,7 +11,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   gcePersistentDisk:
-    pdName: database
+    pdName: db-vol
     fsType: ext4
   #awsElastickBlockStore:
   #  volumeID:
