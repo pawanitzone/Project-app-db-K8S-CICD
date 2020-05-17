@@ -1,1 +1,1 @@
-Create disk with name 'database' before running this yml
+Create disk with name 'db-vol' before running this yml
