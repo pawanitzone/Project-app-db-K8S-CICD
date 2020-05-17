@@ -175,8 +175,6 @@ spec:
         name: data
       spec:
         accessModes: ["ReadWriteOnce"]
-        volumeName: db-vol
-        storageClassName: ""
         resources:
           requests:
             storage: 2Gi
